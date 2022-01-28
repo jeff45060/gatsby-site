@@ -9,6 +9,8 @@ import {
   siteTitle,
 } from './layout.module.css';
 
+// ... import statements
+
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -19,10 +21,11 @@ const Layout = ({ pageTitle, children }) => {
       }
     }
   `);
+
   return (
     <div className={container}>
       <title>
-        {pageTitle} {data.site.siteMetadata.title}
+        {pageTitle} | {data.site.siteMetadata.title}
       </title>
       <header className={siteTitle}>{data.site.siteMetadata.title}</header>
       <nav>
@@ -35,6 +38,11 @@ const Layout = ({ pageTitle, children }) => {
           <li className={navLinkItem}>
             <Link to="/about" className={navLinkText}>
               About
+            </Link>
+          </li>
+          <li className={navLinkItem}>
+            <Link to="/blog" className={navLinkText}>
+              Blog
             </Link>
           </li>
         </ul>
